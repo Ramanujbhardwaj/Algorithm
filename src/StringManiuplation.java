@@ -1,5 +1,4 @@
-import java.util.Collections;
-import java.util.Hashtable;
+import java.util.HashMap;
 
 public class StringManiuplation {
 
@@ -7,7 +6,7 @@ public class StringManiuplation {
 	
 	
 	public static void main(String[] arg) {
-		char[] a = {'A', 'B','C','D','E','B','Z','B','g','h','H','J','K','L', 'A'};
+		char[] a = {'A', 'B','C','D','E','B','Z','B','g','H','H','J','K','L', 'A'};
 		
 		StringManiuplation as = new StringManiuplation();
 		as.checkCharacters(a);
@@ -15,13 +14,13 @@ public class StringManiuplation {
 	
 	
 	public void checkCharacters(char[] a) {
-		Hashtable<String, Counter> aa = new Hashtable<String, Counter>(a.length);
+		HashMap<Character, Counter> aa = new HashMap<Character, Counter>(a.length);
 		for(int i=0 ; i < a.length; i++) {
-			if(aa.containsKey(String.valueOf(a[i]).toLowerCase())) {
-				aa.get(String.valueOf(a[i]).toLowerCase()).incCount();
+			if(aa.containsKey(a[i])) {
+				aa.get(a[i]).incCount();
 				System.out.println("First Repeating character is : " + a[i]);
 			}else {
-				aa.put(String.valueOf(a[i]).toLowerCase(), new Counter(i));
+				aa.put(a[i], new Counter(i));
 			}
 		}
 		
@@ -30,8 +29,8 @@ public class StringManiuplation {
         {
              // If this character occurs only once and appears
             // before the current result, then update the result
-            if (aa.get(String.valueOf(a[i]).toLowerCase()).count == 1 && result > aa.get(String.valueOf(a[i]).toLowerCase()).index){
-                 result = aa.get(String.valueOf(a[i]).toLowerCase()).index;
+            if (aa.get(a[i]).count == 1 && result > aa.get(a[i]).index){
+                 result = aa.get(a[i]).index;
             }
             
                

@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Stack;
 
 public class ArrayStructures {
 
@@ -153,14 +154,33 @@ public class ArrayStructures {
 //		a.printHorzArray();
 //		a.insertValue(40);
 //		a.printHorzArray();
-		a.linearSearchAlgo(14);
-//		a.selectionSort();
+//		a.linearSearchAlgo(14);
+		a.selectionSort();
 //		a.bubbleSort();
 //		a.printHorzArray();
 //		a.binarySearch(16);
 		int aaa[] = {2,4,6,1,32,234,3,21,14};
 		a.insertionSort(aaa);
 		System.out.println(Arrays.toString(aaa));
+		a.arrayToTree(aaa);
+		
+	}
+	
+	public void arrayToTree(int arr[]) {
+		Stack<Integer> stc = new Stack();
+		int i=0;
+		while (i < arr.length) {
+			if(stc.isEmpty() || arr[i] < stc.peek()) {
+				stc.push(arr[i]);
+				i++;
+			}else {
+				System.out.println(stc.pop());
+			}
+		}
+		
+		while(!stc.isEmpty()) {
+			System.out.println(stc.pop());
+		}
 	}
 	
 	public void insertionSort(int arr[]) {

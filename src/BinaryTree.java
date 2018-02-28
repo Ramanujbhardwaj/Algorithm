@@ -1,3 +1,4 @@
+import java.util.TreeMap;
 
 public class BinaryTree {
 
@@ -99,6 +100,8 @@ public class BinaryTree {
 		
 		return false;
 	}
+	
+	
 	public static void main (String arg[] ) {
 		BinaryTree b = new BinaryTree();
 		b.insertNode("Five", 5);
@@ -120,7 +123,7 @@ public class BinaryTree {
 		System.out.println("");
 		
 		BinaryTree tree = new BinaryTree();
-		tree.root = new Node(10,"10");
+		tree.root = new Node(5,"5");
 		tree.root.leftNode = new Node(20,"20");
         tree.root.rightNode = new Node(30,"30");
         tree.root.leftNode.rightNode = new Node(40,"40");
@@ -136,6 +139,80 @@ public class BinaryTree {
         tree.root.rightNode.rightNode.leftNode = new Node(80,"80");
         tree.root.rightNode.rightNode.rightNode = new Node(90,"90");
 		System.out.println("Root Node is a Full Tree : " + b.checkBinaryTreeisFullTree(tree.root));
+//		serialized(tree);
+		int j = b.balancedBinaryTree(tree.root);
+		System.out.println(j);
+		int r = b.mps(tree.root);
+		System.out.println(r);
+	}
+	
+	//Converting a binary Tree to Double LinkedListx	
+	public Node[] doublyLinkedList(Node roots) {
+		if(roots == null)
+			return null;
+		
+		Node[] prev = doublyLinkedList(roots.leftNode);
+		Node[] next = doublyLinkedList(roots.rightNode);
+		
+		Node[] res = new Node[] {roots, roots};
+					
+		if(prev != null) {
+			prev[1].rightNode = roots;
+			roots.leftNode = prev[1];
+			res[0] = prev[0];
+		}		
+		
+		if(next != null) {
+			next[0].leftNode = roots;
+			roots.rightNode = next[0];
+			res[1] = next[1];
+		}
+		
+		return res;
+	}
+	
+	//Max Path Sum
+	public int mps(Node roots) {
+		if(roots == null)
+			return 0;
+		
+		int leftPath = mps(roots.leftNode);
+		int rightPath = mps(roots.rightNode);
+		
+		return Math.max(leftPath, rightPath) + roots.key;
+	}
+	
+	
+	public  int balancedBinaryTree(Node roots) {
+		if(roots == null )
+			return 1;
+		
+		int left = balancedBinaryTree(roots.leftNode);
+		int right = balancedBinaryTree(roots.rightNode);
+		
+		if(left == -1 || right == -1 || Math.abs(left-right) > 1)
+			return -1;
+		
+		return Math.max(left, right) + 1;
+			
+		
+	}
+	public static void serialized(BinaryTree root) {
+		StringBuilder str = new StringBuilder();
+		serializeString(root.root, str);
+		System.out.println(str);
+	}
+	
+	public static void serializeString(Node root, StringBuilder str) {
+		if(root == null) {
+			str.append("#");
+			str.append(",");
+			return;
+		}
+		str.append(root.name);
+		str.append(",");
+		serializeString(root.leftNode, str);
+		serializeString(root.rightNode, str);
 	}
 }
 

@@ -6,6 +6,8 @@ public class TheStack {
 	
 	private int sizeOfStack;
 	
+	
+	
 	private int topOfTheStack = -1;
 	
 	TheStack(int size){
@@ -89,7 +91,6 @@ public class TheStack {
 	}
 
 	public static void main(String[] args) {
-		
 		TheStack s = new TheStack(13);
 		s.displayTheStack();
 		

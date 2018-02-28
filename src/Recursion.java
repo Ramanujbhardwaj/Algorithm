@@ -36,7 +36,7 @@ public class Recursion {
 	public static void main(String[] arg) {
 		int [] aa = {4,12,15,3,18,6,29,10,1,0};
 		Recursion a = new Recursion();
-		System.out.println(a.getTriangularNumber(16));
+		System.out.println(a.getTriangularNumber(5));
 		System.out.println(a.getFactorialNumber(16));
 		a.bubbleSort(aa, aa.length);
 		System.out.println(Arrays.toString(aa));

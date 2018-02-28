@@ -7,7 +7,9 @@ public class ShellSorting {
 		int length = a.length;
 		
 		for(int gap = length/2; gap > 0; gap /= 2 ) {
+			System.out.println(gap);
 			for(int i=gap; i<length; i += 1) {
+				System.out.println(i);
 				int temp = a[i];
 				
 				int j;
@@ -21,7 +23,7 @@ public class ShellSorting {
 	}
 	
 	public static void main(String arg[]) {
-		int arr[] = {12, 34, 54, 2, 3};
+		int arr[] = {12, 34, 54, 2, 3, 45, 234, 2, 1, 345, 12};
         System.out.println("Array before sorting" + Arrays.toString(arr));
         
         ShellSorting ob = new ShellSorting();
