@@ -166,6 +166,8 @@ public class ArrayStructures {
 		
 	}
 	
+	
+	
 	public void arrayToTree(int arr[]) {
 		Stack<Integer> stc = new Stack();
 		int i=0;
